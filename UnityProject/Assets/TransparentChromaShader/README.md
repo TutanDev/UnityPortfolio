@@ -2,7 +2,7 @@
 
 Simple shader that removes a color range from a texture.  
 
-![alt text](UnityPortfolio/UnityProject/Assets/ReadMeImages/TransChromaOff.JPG).
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/master/UnityProject/Assets/ReadMeImages/TransChromaOff.jpg?raw=true "Title").
 
 
 
