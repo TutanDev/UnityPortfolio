@@ -25,7 +25,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _HueBlend: 0.09999999
-    - _HueTolerance: 0.03
+    - _HueTolerance: 0.09999999
     m_Colors:
-    - _RemoveColor: {r: 0.04705883, g: 0.59607846, b: 0.15686275, a: 1}
-    - _SaturationValueRanges: {r: 0, g: 1, b: 0, a: 1}
+    - _RemoveColor: {r: 0.043137256, g: 0.59607846, b: 0.15294118, a: 1}
+    - _SaturationValueRanges: {r: 0.46, g: 1, b: 0.13, a: 1}
