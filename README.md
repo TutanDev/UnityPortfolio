@@ -1,5 +1,3 @@
-# TutanDev Unity Portfolio
+# TutanDev Unity Portfolio - documentation branch
 
-## About this repository
-While learning and experimenting with Unity, sometimes I manage to get something useful.
-In this repository I upload things that I learn just out of curiosiry, so I can download them when I forget.
+This branch purpose is to keep all media files needed to make the .md in one place and to not cluster master branch with useless files
