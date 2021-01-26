@@ -1,4 +1,4 @@
-# Asset folder structure
+# Assets folder structure
 
 Each experiment is contained in its own folder
 
