@@ -4,23 +4,18 @@ using UnityEngine;
 public class GPUGraph : MonoBehaviour
 {
     [Header("Function Library")]
-    [SerializeField]
-    ComputeShader computeShader   = default;
+    [SerializeField] ComputeShader computeShader   = default;
 
     [Header("Draw Settings")]
-    [SerializeField]
-    Material material = default;
-    [SerializeField]
-    Mesh mesh = default;
+    [SerializeField] Material material = default;
+    [SerializeField] Mesh mesh = default;
     const int maxResolution = 1000;
     [SerializeField, Range(10, maxResolution)]
     int resolution = 300;
 
     [Header("Graph Control")]
-    [SerializeField]
-    FunctionName function;
-    [SerializeField]
-    TransitionMode transitionMode = TransitionMode.None;
+    [SerializeField] FunctionName function;
+    [SerializeField] TransitionMode transitionMode = TransitionMode.None;
     [SerializeField, Min(0f)]
     float functionDuration = 1f, transitionDuration = 1f;
 
@@ -31,10 +26,10 @@ public class GPUGraph : MonoBehaviour
     FunctionName transitionFunction;
 
     ComputeBuffer positionsBuffer;
-    static readonly int positionsId = Shader.PropertyToID("_Positions"),
-                        resolutionId = Shader.PropertyToID("_Resolution"),
-                        stepId = Shader.PropertyToID("_Step"),
-                        timeId = Shader.PropertyToID("_Time"),
+    static readonly int positionsId          = Shader.PropertyToID("_Positions"),
+                        resolutionId         = Shader.PropertyToID("_Resolution"),
+                        stepId               = Shader.PropertyToID("_Step"),
+                        timeId               = Shader.PropertyToID("_Time"),
                         transitionProgressId = Shader.PropertyToID("_TransitionProgress");
 
 
@@ -44,10 +39,7 @@ public class GPUGraph : MonoBehaviour
     private void OnEnable() => positionsBuffer = new ComputeBuffer(maxResolution * maxResolution, 3 * 4);
     private void OnDisable() => ReleaseBuffer();
 
-    private void Update()
-    {
-        UpdateFunctionOnGPU();
-    }
+    private void Update() => UpdateFunctionOnGPU();
 
     void UpdateFunctionOnGPU()
     {
