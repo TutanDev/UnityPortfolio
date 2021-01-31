@@ -3,19 +3,17 @@ using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
-    public enum TransitionMode { Cycle, Random }
-
+    [Header("Draw Settings")]
     [SerializeField]
     Transform pointPrefab = default;
     [SerializeField, Range(10,100)]
     int resolution = 60;
 
+    [Header("Graph Control")]
     [SerializeField]
-    FunctionLibrary.FunctionName function;
-    [Space, SerializeField]
-    bool Transition;
+    FunctionName function;
     [SerializeField]
-    TransitionMode transitionMode = TransitionMode.Cycle;
+    TransitionMode transitionMode = TransitionMode.None;
     [SerializeField, Min(0f)]
     float functionDuration = 1f, transitionDuration = 1f;
 
@@ -23,8 +21,9 @@ public class Graph : MonoBehaviour
     Transform[] points;
     Vector3[] initialPos;
     float duration;
+    bool transition => transitionMode != TransitionMode.None;
     bool transitioning;
-    FunctionLibrary.FunctionName transitionFunction;
+    FunctionName transitionFunction;
 
     private void Awake()
     {
@@ -34,7 +33,7 @@ public class Graph : MonoBehaviour
 
     private void Update()
     {
-        if (!Transition)
+        if (!transition)
         {
             UpdateFunction();
             return;
@@ -69,7 +68,7 @@ public class Graph : MonoBehaviour
                 duration -= functionDuration;
                 transitioning = true;
                 transitionFunction = function;
-                if(Transition)
+                if(transition)
                     PickNextFunction();
             }
 
