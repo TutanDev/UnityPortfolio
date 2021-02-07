@@ -3,5 +3,5 @@
 Each experiment is contained in its own folder
 
 ## Current experiments:
-  - **Transparency chroma:** Simple shader with custom Inspector. [Go to experiment](https://github.com/TutanDev/UnityPortfolio/tree/master/UnityProject/Assets/TransparentChromaShader)
-- **Parametric Surfaces:** Scene that draws an animated surface with cubes as points. Points' positions are calculated using a Compute Shader. [Go to experiment](https://github.com/TutanDev/UnityPortfolio/tree/master/UnityProject/Assets/ParametricSurfaces)
+  - **Transparency Chroma:** Simple remove color shader with a custom Inspector. [Go to experiment](https://github.com/TutanDev/UnityPortfolio/tree/master/UnityProject/Assets/TransparentChromaShader)
+- **Parametric Surfaces:** Contemplative Scene showing animated 3D Surfaces calculated with a Compute Shader. [Go to experiment](https://github.com/TutanDev/UnityPortfolio/tree/master/UnityProject/Assets/ParametricSurfaces)
