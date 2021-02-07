@@ -12,8 +12,9 @@ The code contains 3 surfaces and the logic to transition between them:
 
 ### Sphere
 
-Foto simple
-GIF
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG) 
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG) 
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/SphereGIF.gif) 
 
 ### Paraboloid
 
