@@ -13,8 +13,8 @@ The code contains 3 surfaces and the logic to transition between them:
 
 ### Sphere
 <img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG" width="400" height="300" />
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG) 
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/SphereGIF.gif) 
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG" width="400" height="300" />
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/SphereGIF.gif" width="400" height="300" />
 
 ### Paraboloid
 ![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid.PNG) 
