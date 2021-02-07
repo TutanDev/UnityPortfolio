@@ -1,3 +1,5 @@
-﻿public static class FLUtils {}
-public enum FunctionName { Wave, MultiWave, Ripple, Sphere, Torus, Paraboloid }
-public enum TransitionMode { None, Cycle, Random }
+﻿public static class FLUtils {
+    public static int numberOdFunctions = 3;
+}
+public enum FunctionName { Sphere, Paraboloid, KleinBottle }
+public enum TransitionMode { None, Cycle }

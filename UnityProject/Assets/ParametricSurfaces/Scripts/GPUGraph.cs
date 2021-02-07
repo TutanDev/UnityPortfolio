@@ -30,7 +30,7 @@ public class GPUGraph : MonoBehaviour
                         resolutionId         = Shader.PropertyToID("_Resolution"),
                         stepId               = Shader.PropertyToID("_Step"),
                         timeId               = Shader.PropertyToID("_Time"),
-                        transitionProgressId = Shader.PropertyToID("_TransitionProgress");
+                        transitionProgressId = Shader.PropertyToID("_TransitionProgres");
 
 
 
@@ -52,7 +52,7 @@ public class GPUGraph : MonoBehaviour
             computeShader.SetFloat(transitionProgressId, Mathf.SmoothStep(0f, 1f, duration / transitionDuration));
         }
 
-        var kernelIndex = (int)function + (int)(transitioning ? transitionFunction : function) * 6;
+        var kernelIndex = (int)function + (int)(transitioning ? transitionFunction : function) * FLUtils.numberOdFunctions;
         computeShader.SetBuffer(kernelIndex, positionsId, positionsBuffer);
         int groups = Mathf.CeilToInt(resolution / 8f);
         computeShader.Dispatch(kernelIndex, groups, groups, 1);
@@ -93,20 +93,13 @@ public class GPUGraph : MonoBehaviour
 
     void PickNextFunction()
     {
-        function = transitionMode == TransitionMode.Cycle ?
-            GetNextFunctionName(function) :
-            GetRandomFunctionNameOtherThan(function);
+        function = GetNextFunctionName(function);
+
     }
 
     public static FunctionName GetNextFunctionName(FunctionName name)
     {
-        return (FunctionName)(((int)name + 1) % 6);
-    }
-
-    public static FunctionName GetRandomFunctionNameOtherThan(FunctionName name)
-    {
-        var choice = (FunctionName)Random.Range(1, 6);
-        return choice == name ? 0 : choice;
+        return (FunctionName)(((int)name + 1) % FLUtils.numberOdFunctions);
     }
 
     void ReleaseBuffer()

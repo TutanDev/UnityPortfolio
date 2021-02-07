@@ -1,83 +1,24 @@
-﻿#pragma kernel WaveKernel
-#pragma kernel WaveToMultiWaveKernel
-#pragma kernel WaveToRippleKernel
-#pragma kernel WaveToSphereKernel
-#pragma kernel WaveToTorusKernel
-#pragma kernel WaveToParaboloidKernel
-
-#pragma kernel MultiWaveToWaveKernel
-#pragma kernel MultiWaveKernel
-#pragma kernel MultiWaveToRippleKernel
-#pragma kernel MultiWaveToSphereKernel
-#pragma kernel MultiWaveToTorusKernel
-#pragma kernel MultiWaveToParaboloidKernel
-
-#pragma kernel RippleToWaveKernel
-#pragma kernel RippleToMultiWaveKernel
-#pragma kernel RippleKernel
-#pragma kernel RippleToSphereKernel
-#pragma kernel RippleToTorusKernel
-#pragma kernel RippleToParaboloidKernel
-
-#pragma kernel SphereToWaveKernel
-#pragma kernel SphereToMultiWaveKernel
-#pragma kernel SphereToRippleKernel
-#pragma kernel SphereKernel
-#pragma kernel SphereToTorusKernel
+﻿#pragma kernel SphereKernel
 #pragma kernel SphereToParaboloidKernel
+#pragma kernel SphereToKleinBottleKernel
 
-#pragma kernel TorusToWaveKernel
-#pragma kernel TorusToMultiWaveKernel
-#pragma kernel TorusToRippleKernel
-#pragma kernel TorusToSphereKernel
-#pragma kernel TorusKernel
-#pragma kernel TorusToParaboloidKernel
-
-#pragma kernel ParaboloidToWaveKernel
-#pragma kernel ParaboloidToMultiWaveKernel
-#pragma kernel ParaboloidToRippleKernel
 #pragma kernel ParaboloidToSphereKernel
-#pragma kernel ParaboloidToTorusKernel
 #pragma kernel ParaboloidKernel
+#pragma kernel ParaboloidToKleinBottleKernel
+
+#pragma kernel KleinBottleToSphereKernel
+#pragma kernel KleinBottleToParaboloidKernel
+#pragma kernel KleinBottleKernel
 
 
 RWStructuredBuffer<float3> _Positions;
 uint _Resolution;
-float _Step, _Time, _TransitionProgress;
+float _Step, _Time, _TransitionProgres;
 
-#define PI 3.14159265358979323846
-float3 Wave(float u, float v, float t) {
-	float3 p;
-	p.x = u;
-	p.y = sin(PI * (u + v + t));
-	p.z = v;
-	return p;
-}
-float3 MultiWave(float u, float v, float t)
-{
-	float3 p;
-	p.x = u;
-	p.y = sin(PI * (u + 0.5 * t));
-	p.y += 0.5 * sin(2.0f * PI * (v + t));
-	p.y += sin(PI * (u + v + 0.25 * t));
-	p.y *= 1.0 / 2.5;
-	p.z = v;
-	return p;
-}
-float3 Ripple(float u, float v, float t)
-{
-	float d = sqrt(u * u + v * v);
-
-	float3 p;
-	p.x = u;
-	p.y = sin(PI * (4.0 * d - t));
-	p.y /= (1.0 + 10.0 * d);
-	p.z = v;
-	return p;
-}
+#define PI 3.1415920653589793203846
 float3 Sphere(float u, float v, float t)
 {
-	float r = 0.9 + 0.1 * sin(PI * (6.0 * u + 4.0 * v + t));
+	float r = 0.9 + 0.1 * sin(PI * (9.0 * u + 6.0 * v + t));
 	float s = r * cos(0.5 * PI * v);
 
 	float3 p;
@@ -86,28 +27,29 @@ float3 Sphere(float u, float v, float t)
 	p.z = s * cos(PI * u);
 	return p;
 }
-float3 Torus(float u, float v, float t)
-{
-	float r1 = 0.7 + 0.1 * sin(PI * (6.0 * u + 0.5 * t));
-	float r2 = 0.15 + 0.05 * sin(PI * (8.0 * u + 4.0 * v + 2.0 * t));
-	float s = r1 + r2 * cos(PI * v);
-
-	float3 p;
-	p.x = s * sin(PI * u);
-	p.y = r2 * sin(PI * v);
-	p.z = s * cos(PI * u);
-	return p;
-}
 float3 Paraboloid(float u, float v, float t)
 {
-	float r = 0.9 + 0.1 * sin(PI * (12.0 * u + 8.0 * v + t));
-	float s = r * (v + 1.0) * (v + 1.0) * 0.3;
+	float r = 1;
+	float s = r * (v + 1.0) * (v + 1.0) * 0.35 + 0.1 * sin(PI * (9.0 * u + 6.0 * v + t));
 
 	float3 p;
 	p.x = s * cos(PI * u);
 	p.y = r * v;
 	p.z = s * sin(PI * u);
 	return p;
+}
+float3 KleinBottle(float u, float v, float t)
+{
+	u = u * PI;
+	v = v * PI;
+	float r =3;
+	float s = r + cos(v / 2.0) * sin(u) - sin(v / 2.0) * sin(2.0 * u);
+
+	float3 p;
+	p.x = s * cos(v + 2 * t);
+	p.y = (sin(v / 2.0) * sin(u) + cos(v / 2.0) * sin(2.0 * u));
+	p.z = s * sin(v + 2 *t);
+	return p / 3.0;
 }
 
 
@@ -135,54 +77,23 @@ void SetPosition(uint3 id, float3 position)
 	[numthreads(8, 8, 1)]																						\
 	void functionA##To##functionB##Kernel (uint3 id: SV_DispatchThreadID) {										\
 		float2 uv = GetUV(id);																					\
-		float3 position = lerp(functionA(uv.x, uv.y, _Time), functionB(uv.x, uv.y, _Time), _TransitionProgress);\
+		float3 position = lerp(functionA(uv.x, uv.y, _Time), functionB(uv.x, uv.y, _Time), _TransitionProgres);\
 		SetPosition(id, position);																				\
 	}
 
-KERNEL_FUNCTION(Wave)
-KERNEL_FUNCTION(MultiWave)
-KERNEL_FUNCTION(Ripple)
-KERNEL_FUNCTION(Sphere)
-KERNEL_FUNCTION(Torus)
-KERNEL_FUNCTION(Paraboloid)
 
-KERNEL_MOPH_FUNCTION(Wave, MultiWave);
-KERNEL_MOPH_FUNCTION(Wave, Ripple);
-KERNEL_MOPH_FUNCTION(Wave, Sphere);
-KERNEL_MOPH_FUNCTION(Wave, Torus);
-KERNEL_MOPH_FUNCTION(Wave, Paraboloid);
+KERNEL_FUNCTION(Sphere);
+KERNEL_FUNCTION(Paraboloid);
+KERNEL_FUNCTION(KleinBottle);
 
-KERNEL_MOPH_FUNCTION(MultiWave, Wave);
-KERNEL_MOPH_FUNCTION(MultiWave, Ripple);
-KERNEL_MOPH_FUNCTION(MultiWave, Sphere);
-KERNEL_MOPH_FUNCTION(MultiWave, Torus);
-KERNEL_MOPH_FUNCTION(MultiWave, Paraboloid);
-
-KERNEL_MOPH_FUNCTION(Ripple, Wave);
-KERNEL_MOPH_FUNCTION(Ripple, MultiWave);
-KERNEL_MOPH_FUNCTION(Ripple, Sphere);
-KERNEL_MOPH_FUNCTION(Ripple, Torus);
-KERNEL_MOPH_FUNCTION(Ripple, Paraboloid);
-
-KERNEL_MOPH_FUNCTION(Sphere, Wave);
-KERNEL_MOPH_FUNCTION(Sphere, MultiWave);
-KERNEL_MOPH_FUNCTION(Sphere, Ripple);
-KERNEL_MOPH_FUNCTION(Sphere, Torus);
 KERNEL_MOPH_FUNCTION(Sphere, Paraboloid);
+KERNEL_MOPH_FUNCTION(Sphere, KleinBottle);
 
-KERNEL_MOPH_FUNCTION(Torus, Wave);
-KERNEL_MOPH_FUNCTION(Torus, MultiWave);
-KERNEL_MOPH_FUNCTION(Torus, Ripple);
-KERNEL_MOPH_FUNCTION(Torus, Sphere);
-KERNEL_MOPH_FUNCTION(Torus, Paraboloid);
-
-KERNEL_MOPH_FUNCTION(Paraboloid, Wave);
-KERNEL_MOPH_FUNCTION(Paraboloid, MultiWave);
-KERNEL_MOPH_FUNCTION(Paraboloid, Ripple);
 KERNEL_MOPH_FUNCTION(Paraboloid, Sphere);
-KERNEL_MOPH_FUNCTION(Paraboloid, Torus);
+KERNEL_MOPH_FUNCTION(Paraboloid, KleinBottle);
 
-
+KERNEL_MOPH_FUNCTION(KleinBottle, Sphere);
+KERNEL_MOPH_FUNCTION(KleinBottle, Paraboloid);
 
 
 
