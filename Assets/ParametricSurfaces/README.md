@@ -12,17 +12,13 @@ The calculation ob the points positions is done using a Compute Shader.
 The code contains 3 surfaces and the logic to transition between them:
 
 ### Sphere
-<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG" width="400" height="300" /><img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG" width="400" height="300" />
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG" width="400" height="300" /> <img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG" width="400" height="300" />
 <img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/SphereGIF.gif" width="400" height="300" />
 
 ### Paraboloid
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid.PNG) 
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid2.PNG) 
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/ParaboloidGIF.gif) 
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid.PNG" width="400" height="300" /> <img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid2.PNG" width="400" height="300" />
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/ParaboloidGIF.gif" width="400" height="300" />
 
 ### Kleant Bottle
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Klein.PNG)  
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/KleinGIF.gif) 
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Klein.PNG" width="400" height="300" /> <img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/KleinGIF.gif" width="400" height="300" />
 
-### Transition (Morph)
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/MorphGIF.gif) 
