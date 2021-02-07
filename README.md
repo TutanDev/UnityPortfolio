@@ -9,5 +9,5 @@ The different projects are not related to each other, each project is a practica
 Each project is contained within its own folder inside the Assets folder.
 
 ## Current projects:
-  - **Transparency Chroma:** Simple chroma shader with a custom Inspector. [Go to project](https://github.com/TutanDev/UnityPortfolio/tree/master/UnityProject/Assets/TransparentChromaShader)
-- **Parametric Surfaces:** Contemplative Scene showing animated 3D Surfaces calculated with a Compute Shader. [Go to project](https://github.com/TutanDev/UnityPortfolio/tree/master/UnityProject/Assets/ParametricSurfaces)
+  - **Transparency Chroma:** Simple chroma shader with a custom Inspector. [Go to project](https://github.com/TutanDev/UnityPortfolio/tree/master/Assets/TransparentChromaShader)
+  - **Parametric Surfaces:** Contemplative Scene showing animated 3D Surfaces calculated with a Compute Shader. [Go to project](https://github.com/TutanDev/UnityPortfolio/tree/master/Assets/ParametricSurfaces)
