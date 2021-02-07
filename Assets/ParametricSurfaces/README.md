@@ -12,7 +12,8 @@ The calculation ob the points positions is done using a Compute Shader.
 The code contains 3 surfaces and the logic to transition between them:
 
 ### Sphere
-![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG | width=100) 
+<img src="https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG" width="200" height="200" />
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.png | width=100) 
 ![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG) 
 ![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/SphereGIF.gif) 
 
