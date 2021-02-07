@@ -11,17 +11,18 @@ The calculation ob the points positions is done using a Compute Shader.
 The code contains 3 surfaces and the logic to transition between them:
 
 ### Sphere
-
 ![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere.PNG) 
 ![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Sphere2.PNG) 
 ![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/SphereGIF.gif) 
 
 ### Paraboloid
-
-Foto simple
-GIF
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid.PNG) 
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Paraboloid2.PNG) 
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/ParaboloidGIF.gif) 
 
 ### Kleant Bottle
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/Klein.PNG)  
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/KleinGIF.gif) 
 
-Foto simple
-GIF
+### Transition (Morph)
+![alt text](https://github.com/TutanDev/UnityPortfolio/blob/documentation/ParametricSurfaces/MorphGIF.gif) 
